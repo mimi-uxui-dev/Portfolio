@@ -1,23 +1,15 @@
 const csjs = require('csjs-inject')
 const bel = require('bel')
 
-module.exports = inputInteger
+module.exports = portfolio
 
-function inputInteger() {
-
-    const input = bel`<input 
-        class=${css.inputInteger} 
-        type="number" 
-        placeholder="11" 
-    >`
-
-    return input
+function portfolio() {
+    const divPortfolio = bel`<div 
+        class=${css.portfolio}> portfolio div </div>`
+    return divPortfolio
 }
 
 const css = csjs`
-    .inputInteger {
-        background-color: pink;
-        border: none;
-        padding: 8px;
+    .portfolio {
     }
 `
