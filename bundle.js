@@ -1,20 +1,14 @@
 (function(){function r(e,n,t){function o(i,f){if(!n[i]){if(!e[i]){var c="function"==typeof require&&require;if(!f&&c)return c(i,!0);if(u)return u(i,!0);var a=new Error("Cannot find module '"+i+"'");throw a.code="MODULE_NOT_FOUND",a}var p=n[i]={exports:{}};e[i][0].call(p.exports,function(r){var n=e[i][1][r];return o(n||r)},p,p.exports,r,e,n,t)}return n[i].exports}for(var u="function"==typeof require&&require,i=0;i<t.length;i++)o(t[i]);return o}return r})()({1:[function(require,module,exports){
 const csjs = require('csjs-inject')
 const bel = require('bel')
-const inputInteger = require("..")
+const navbar = require("../src/navbar")
+const aboveTheFold = require("../src/aboveTheFold")
 
 
 function demo() {
-    const output = bel`<div class=${css.output}>0</div>`
-
-    const page = bel`<div class=${css.demo}>
-        <h1>input intergerrr demo</h1>
-        ${output}
-        <div class=${css.container}>
-            ${inputInteger()}
-            ${inputInteger()}
-            ${inputInteger()}
-        </div>  
+    const page = bel`<div class=${css.mainContainer}>
+            ${navbar()}
+            ${aboveTheFold()}   
     </div>`
 
     return page
@@ -22,11 +16,15 @@ function demo() {
 
 
 const css = csjs`
+    .mainContainer {
+        margin: 0;
+        padding: 0;
+    }
 
 `
 
 document.body.appendChild(demo())
-},{"..":26,"bel":3,"csjs-inject":6}],2:[function(require,module,exports){
+},{"../src/aboveTheFold":26,"../src/navbar":27,"bel":3,"csjs-inject":6}],2:[function(require,module,exports){
 var trailingNewlineRegex = /\n[\s]+$/
 var leadingNewlineRegex = /^\n[\s]+/
 var trailingSpaceRegex = /[\s]+$/
@@ -1102,24 +1100,259 @@ module.exports = function (css, options) {
 const csjs = require('csjs-inject')
 const bel = require('bel')
 
-module.exports = inputInteger
+module.exports = aboveTheFold
 
-function inputInteger() {
+function aboveTheFold() {
+    const divaboveTheFold = bel`<div class=${css.aboveTheFold}>
+        
+        <div class=${css.textContainer}>
+            <div>
+                    <div>
+                        <h6 class=${css.greeting}>I'm Taous Khoudour, call me <span>Mimi</span></h6>
+                        <h3 class=${css.idesign}>I Design</h3>
+                        <h1 class=${css.headerH1} >
+                        Beautiful <span class=${css.ex}>Experiences</span> & <span class=${css.in}>Interfaces</span> that people love
+                        </h1>
+                        
+                        <h3 class=${css.help}>I help startups and business, launch incredible and useful products that scale, <span class=${css.asap}>ASAP! <img src="https://i.ibb.co/zhw26Wh/line.png" alt="iamtaous"></span></h3>
+                        </div>
+                        
+                        <div class=${css.ctaContainer}>
+                        <a href="" class=${css.viewWork}>View Work</a>
+                        <a href="" class=${css.letsTalk}>Let's Talk <img src="https://i.ibb.co/BwH728b/Arrow-Up-Right.png" alt="iamtaous"></a>
+                    </div>            
+            </div>
+            <div class=${css.sm}>
+                <a href=""><img src="https://i.ibb.co/58JyBjW/Behance-Logo.png" alt="iamtaous Behance"></a>
+                <a href=""><img src="https://i.ibb.co/wN56LTX/Instagram-Logo.png" alt="iamtaous Instagram"></a>
+                <a href=""><img src="https://i.ibb.co/vYfkZrh/Twitter-Logo.png" alt="iamtaous Twitter"></a>
+                <a href=""><img src="https://i.ibb.co/nMrLgk3/Linkedin-Logo.png" alt="iamtaous Linkedin"></a>
+            </div>
+        </div>
 
-    const input = bel`<input 
-        class=${css.inputInteger} 
-        type="number" 
-        placeholder="11" 
-    >`
+        <div>
+            <img src="https://i.ibb.co/2hgxNp1/img.png" alt="iamtaous">
+        </div>
 
-    return input
+    </div>`
+    return divaboveTheFold
 }
 
 const css = csjs`
-    .inputInteger {
-        background-color: pink;
-        border: none;
-        padding: 8px;
+    @import url('https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=MuseoModerno:wght@100;200;300;400;500;600;700;800;900&display=swap');
+    :root {
+        --blk : #0D0106 ;
+        --blu: #2C0AEB ;
+        --wht: #FBFBFF;
+        --pink : #D81159;
+    }
+    body, html {
+        background: var(--wht);
+        padding: 0; 
+        margin: 0; 
+        box-sizing: border-box;
+        color: var(--blk);
+    }
+    h1, h2, h3, h4, h5, h6, p ,a , span {
+        padding: 0; 
+        margin: 0; 
+        box-sizing: border-box;
+    }
+    .aboveTheFold {
+        width: 100%;
+        height: 90vh;
+        background: var(--wht);
+        max-width: 1120px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 72px;
+    }
+    .greeting {
+        font-family: 'Barlow', sans-serif;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 24px;
+        letter-spacing: 0.02em;
+        color: var(--blk);
+        padding: 0; 
+        margin: 0; 
+        box-sizing: border-box;
+        margin-bottom: 16px;
+    }
+    .greeting span {
+        font-family: 'MuseoModerno', cursive;
+        font-style: normal;
+        font-weight: 600;   
+        color: var(--blu);
+    }
+    .idesign {
+        font-family: 'Barlow', sans-serif;
+        font-style: normal;
+        font-weight: 600;
+        font-size: 18px;
+        line-height: 24px;
+        letter-spacing: 0.02em;
+        color: var(--blk);
+        margin-bottom: 4px;
+    }
+    .headerH1 {
+        font-family: 'MuseoModerno', cursive;
+        font-style: normal;
+        font-weight: 600;
+        font-size: 32px;
+        line-height: 40px;
+        letter-spacing: 0.01em;
+        color: var(--blk);
+        margin-bottom: 32px;
+    }
+    .headerH1 .ex {
+        color: var(--pink);
+    }
+    .headerH1 .in {
+        color: var(--blu);
+    }
+    .help {
+        font-family: 'Barlow', sans-serif;
+        font-style: normal;
+        font-weight: 600;
+        font-size: 18px;
+        line-height: 24px;
+        letter-spacing: 0.03em;
+        max-width: 443px;
+    }
+    .viewWork {
+        text-align: center;
+        padding: 8px 24px;
+        background: var(--blu);
+        border-radius: 24px;
+
+        font-family: 'MuseoModerno', cursive;
+        font-style: normal;
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 25px;
+        letter-spacing: 0.01em;
+        color: var(--wht);
+        border: 2px solid transparent;
+
+    }
+    .viewWork:hover, .letsTalk:hover {
+        background: var(--wht);
+        border: 2px solid var(--blu);
+    }
+    .letsTalk {
+        text-align: center;
+        padding: 8px 24px;
+        background: transparent;
+        border-radius: 24px;
+
+        font-family: 'MuseoModerno', cursive;
+        font-style: normal;
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 25px;
+        letter-spacing: 0.01em;
+        color: var(--blu);
+        border: 2px solid transparent;
+
+        display: flex; 
+        justify-content: center; 
+        align-items: center;
+        gap: 10px;
+        width: fit-content;
+        height: 100%;
+    }
+    .ctaContainer {
+        display: flex; 
+        align-items: center;
+        gap: 16px;
+        margin-top: 48px;
+    }
+    .textContainer {
+        display: flex;
+        flex-direction: column;
+        gap: 160px;
+    }
+    .sm {
+        display: flex; 
+        flex-direction: row;
+        gap: 24px;
+    }
+    .sm a {
+        border-bottom: 2px solid transparent;
+    }
+    .sm a:hover {
+        border-bottom: 2px solid var(--blu);
+    }
+    .asap img {
+        position: relative;
+        left: -54px;
+        top: 10px;
+    }
+`
+},{"bel":3,"csjs-inject":6}],27:[function(require,module,exports){
+const csjs = require('csjs-inject')
+const bel = require('bel')
+
+module.exports = navbar
+
+function navbar() {
+    const divNavbar = bel`<nav class=${css.navbar}>
+        <a href="/">
+            <div class=${css.logo}></div>
+        </a>
+        <div>
+            <a href="#aboutme">About Me</a>
+            <a href="#work">Work</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </nav>`
+    return divNavbar
+}
+
+const css = csjs`
+    @import url('https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=MuseoModerno:wght@100;200;300;400;500;600;700;800;900&display=swap');
+    :root {
+        --blk : #0D0106 ;
+        --blu: #2C0AEB ;
+    }
+    .navbar {
+        width: 100%; 
+        max-width: 1120px;
+        margin: 0 auto;
+        padding: 24px 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    a {
+        color: var(--blk) ;
+        text-decoration: none;
+        font-family: 'Barlow', sans-serif;
+        font-style: normal;
+        font-weight: 600;
+        font-size: 18px;
+        line-height: 22px;
+        letter-spacing: 0.02em;
+    }
+    a:hover {
+        transition: all ease 0.3s;
+        color: var(--blu);
+    }
+    .navbar div {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 44px ;
+    }
+    .logo {
+        width: 48px;
+        height: 48px;
+        background-color: var(--blu) ;
+        border-radius: 50%;
     }
 `
 },{"bel":3,"csjs-inject":6}]},{},[1]);
